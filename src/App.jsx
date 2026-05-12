@@ -41,7 +41,7 @@ function App() {
     <div className="app">
       <h1>CRUD (Movies Table)</h1>
       <h2>Movie List</h2>
-      <MovieTable movies={movies} loading={loading}/>
+      <MovieTable movies={movies} loading={loading} pageSize={pageSize} />
       <Pagination setPage={setPage} page={page} numberOfPages={numberOfPages} />
     </div>
   )
