@@ -2,7 +2,7 @@
 import React from 'react'
 import './MovieTable.css'
 
-function MovieTable({movies}) {
+function MovieTable({ movies, loading }) {
   return (
     <div>
         <table className="movie-table">
@@ -15,7 +15,12 @@ function MovieTable({movies}) {
             </tr>
           </thead>
           <tbody>
-            {movies.map((movie)=>{
+            {loading ? Array.from({length: 10}).map((_, i)=>(
+              <tr key={i} className="loading-row">
+               <td colSpan={4}>Loading...</td>
+              </tr>
+            )) :
+            movies.map((movie)=>{
                 return (
                     <tr key={movie.id}>
                     <td>{movie.id}</td>

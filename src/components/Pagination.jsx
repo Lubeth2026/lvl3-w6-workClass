@@ -2,7 +2,7 @@
 import React from 'react'
 import './Pagination.css'
 
-function Pagination({setPage, page, numberOfPages}) {
+function Pagination({ setPage, page, numberOfPages }) {
   return (
     <div className="pagination">
         <button disabled={page === 0} onClick={()=> setPage(
