@@ -16,13 +16,14 @@ function App() {
   const [genre, setGenre] = useState("");
 //GET the hooks State//Hooks:useMovies.js//
   const {movies, numberOfPages, loading} = useMovies(page, genre);
-
+//Reference check to see if user exists & is logged in to app//STATE//
+  const [currentUser, setCurrentUser] = useState(null);
     
 
   return (
     <div className="app">
       <h1>CRUD (Movies Table)</h1>
-      <AuthForm />
+      <AuthForm setCurrentUser={setCurrentUser} />
       <h2>Movie List</h2>
       <MovieForm setGenre={setGenre} />
       <MovieTable movies={movies} loading={loading} pageSize={PAGE_SIZE} />
