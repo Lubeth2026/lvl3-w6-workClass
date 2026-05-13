@@ -4,43 +4,56 @@ import { supabase } from '../utils/supabase'
 
 function AuthForm({setCurrentUser, currentUser}) {
 //Authentication State//
-    const [email, setEmail] = useState("");
-    const [password,setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
+//Clears out UI Data when logged out//
+function clearForm(){
+    setEmail("");
+    setPassword("");
+}
 //Sign Up Function//
-async function signup() {
+  async function signup() {
     try {
-       const {data, error} = await supabase.auth.signUp({ email, password });
-       if(error){ alert(error.message);
+      const { data, error } = await supabase.auth.signUp({ email, password });
+      if (error) {
+        alert(error.message);
         return;
-       }
-       if(data.session){ setCurrentUser(data.user);}
+      }
+      if (data.session) {
+        setCurrentUser(data.user);
+      }
     } catch (error) {
-       console.log(error) 
+      console.log(error);
     }
     signup();
-}
+  }
 //Login Function//
-async function login() {
+  async function login() {
     try {
-        const {data, error} = await supabase.auth.signInWithPassword({ email, password });
-        if(error){ alert(error.message);
-            return;
-        }
-        setCurrentUser(data.user);
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+      if (error) {
+        alert(error.message);
+        return;
+      }
+      setCurrentUser(data.user);
     } catch (error) {
-        console.log(error)
+      console.log(error);
     }
-}
+  }
 //Logout Function//
-async function logout() {
+  async function logout() {
     try {
-        await supabase.auth.signOut();
-        setCurrentUser(null);
+      await supabase.auth.signOut();
+      setCurrentUser(null);
+      clearForm();
     } catch (error) {
-        console.log(error)
+      console.log(error);
     }
-}
+  }
 
   return (
     <div className="auth-container">
