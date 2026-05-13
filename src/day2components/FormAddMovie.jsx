@@ -13,6 +13,12 @@ function FormAddMovie() {
 
 async function handleSubmit(event){
       event.preventDefault();
+
+      if(!title || !genre || !year || !details){
+        alert("Please fill in all fields!");
+        return;
+      }
+      
       {/*This is where ADD movie to MovieTable happens with passing an object*/}
    await supabase.from("movies").insert({
      title, 
