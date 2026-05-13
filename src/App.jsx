@@ -6,6 +6,7 @@ import Pagination from './components/Pagination';
 import MovieForm from './components/MovieForm';
 import useMovies from './day2Hooks/useMovies';
 import AuthForm from './day2components/AuthForm';
+import FormAddMovie from './day2components/FormAddMovie';
 
 const PAGE_SIZE = 10;
 
@@ -27,6 +28,7 @@ function App() {
       {/*This will ONLY show MovieList table if Logged In*/}
       {currentUser && (
       <>
+      <FormAddMovie />
       <h2>Movie List</h2>
       <MovieForm setGenre={setGenre} />
       <MovieTable movies={movies} loading={loading} pageSize={PAGE_SIZE} />
