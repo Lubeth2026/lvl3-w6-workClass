@@ -23,11 +23,15 @@ function App() {
   return (
     <div className="app">
       <h1>CRUD (Movies Table)</h1>
-      <AuthForm setCurrentUser={setCurrentUser} />
+      <AuthForm setCurrentUser={setCurrentUser} currentUser={currentUser} />
+      {/*This will ONLY show MovieList table if Logged In*/}
+      {currentUser && (
+      <>
       <h2>Movie List</h2>
       <MovieForm setGenre={setGenre} />
       <MovieTable movies={movies} loading={loading} pageSize={PAGE_SIZE} />
       <Pagination setPage={setPage} page={page} numberOfPages={numberOfPages} />
+      </>  )}
     </div>
   )
 }

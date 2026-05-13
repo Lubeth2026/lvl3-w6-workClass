@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import { supabase } from '../utils/supabase'
 
-function AuthForm({setCurrentUser}) {
+function AuthForm({setCurrentUser, currentUser}) {
 //Authentication State//
     const [email, setEmail] = useState("");
     const [password,setPassword] = useState("");
@@ -44,20 +44,32 @@ async function logout() {
 
   return (
     <div className="auth-container">
-      <label htmlFor="email">Email:
-        <input type="text" name="email" id="email" value={email} 
-        onChange={(event)=> setEmail(event.target.value)}/>
+      <label htmlFor="email">
+        Email:
+        <input
+          type="text"
+          name="email"
+          id="email"
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
+        />
       </label>
-      <label htmlFor="password">Password:
-        <input type="text" name="password" id="password" value={password} 
-        onChange={(event)=> setPassword(event.target.value)}/>
+      <label htmlFor="password">
+        Password:
+        <input
+          type="text"
+          name="password"
+          id="password"
+          value={password}
+          onChange={(event) => setPassword(event.target.value)}
+        />
       </label>
 
       <button onClick={signup}>Sign Up</button>
       <button onClick={login}>Login</button>
-      <button onClick={logout}>Logout</button>
+      {currentUser && <button onClick={logout}>Logout</button>}
     </div>
-  )
+  );
 }
 
 export default AuthForm
