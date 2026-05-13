@@ -57,6 +57,9 @@ function clearForm(){
 
   return (
     <div className="auth-container">
+      {!currentUser && (
+      <>
+      {" "}
       <label htmlFor="email">
         Email:
         <input
@@ -80,6 +83,8 @@ function clearForm(){
 
       <button onClick={signup}>Sign Up</button>
       <button onClick={login}>Login</button>
+      </>
+      )}
       {currentUser && <button onClick={logout}>Logout</button>}
     </div>
   );
