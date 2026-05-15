@@ -2,6 +2,8 @@
 import React, { useState } from 'react'
 import './MovieForm.css'
 
+//THIS FORM HANDLES THE FILTER ON THE TABLE//
+
 function MovieForm({setGenre}) {
 //Which Genre Option is Selected State//
     const [selectedGenre, setSelectedGenre] = useState("");

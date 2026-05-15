@@ -3,6 +3,8 @@ import React, { useState } from 'react'
 import { supabase } from '../utils/supabase'
 import './FormAddMovie.css'
 
+//THIS FORM CREATES, UPDATES, & DELETES 3of4 CRUD fields//NOT JUST ADD//
+
 //ADD movie to MoviesList/App State//
 //Tracks the diff types of Input Fields//
 function FormAddMovie() {
@@ -18,7 +20,7 @@ async function handleSubmit(event){
         alert("Please fill in all fields!");
         return;
       }
-      
+
       {/*This is where ADD movie to MovieTable happens with passing an object*/}
    await supabase.from("movies").insert({
      title, 
